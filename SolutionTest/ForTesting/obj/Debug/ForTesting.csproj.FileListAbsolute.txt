@@ -1,0 +1,6 @@
+C:\Users\HaykHar\Source\Repos\ForTest\SolutionTest\ForTesting\bin\Debug\ForTesting.exe.config
+C:\Users\HaykHar\Source\Repos\ForTest\SolutionTest\ForTesting\bin\Debug\ForTesting.exe
+C:\Users\HaykHar\Source\Repos\ForTest\SolutionTest\ForTesting\bin\Debug\ForTesting.pdb
+C:\Users\HaykHar\Source\Repos\ForTest\SolutionTest\ForTesting\obj\Debug\ForTesting.csprojResolveAssemblyReference.cache
+C:\Users\HaykHar\Source\Repos\ForTest\SolutionTest\ForTesting\obj\Debug\ForTesting.exe
+C:\Users\HaykHar\Source\Repos\ForTest\SolutionTest\ForTesting\obj\Debug\ForTesting.pdb
