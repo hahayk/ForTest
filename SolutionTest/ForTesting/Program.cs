@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForTesting
 {
@@ -10,13 +6,25 @@ namespace ForTesting
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(killKthBit(37, 3));
+
+            Console.WriteLine(rangeBitCount(2, 7));
         }
 
-        static int killKthBit(int n, int k)
+        static int rangeBitCount(int a, int b)
         {
-            return n & ~(1 << k-1);
-        }
+            var cnt = 0;
 
+            for (int j = a; j <= b; ++j)
+            {
+                for (int i = 0; i < 8; ++i)
+                {
+                    if ((j & (1 << i)) != 0)
+                    {
+                        ++cnt;
+                    }
+                }
+            }
+            return cnt;
+        }
     }
 }
