@@ -6,25 +6,26 @@ namespace ForTesting
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine(rangeBitCount(2, 7));
+            Console.WriteLine(mirrorBits(97));
         }
 
-        static int rangeBitCount(int a, int b)
+        static int mirrorBits(int a)
         {
-            var cnt = 0;
-
-            for (int j = a; j <= b; ++j)
+            var retval = 0;
+            while(a > 0)
             {
-                for (int i = 0; i < 8; ++i)
-                {
-                    if ((j & (1 << i)) != 0)
-                    {
-                        ++cnt;
-                    }
-                }
+                retval = (retval << 1) + (a & 1);
+                a >>= 1;
             }
-            return cnt;
+
+            return retval;
         }
+
     }
 }
+
+
+//1100001
+//1000011
+
+//a = a<<1 & 1
