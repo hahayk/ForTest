@@ -6,26 +6,14 @@ namespace ForTesting
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(mirrorBits(97));
+            Console.WriteLine(secondRightmostZeroBit(37));
         }
 
-        static int mirrorBits(int a)
+        static int secondRightmostZeroBit(int n)
         {
-            var retval = 0;
-            while(a > 0)
-            {
-                retval = (retval << 1) + (a & 1);
-                a >>= 1;
-            }
-
-            return retval;
+            return (-~((n-~(n^(n+1))/2 ^ (n-~(n^(n+1))/2+1)))/2);
         }
+
 
     }
 }
-
-
-//1100001
-//1000011
-
-//a = a<<1 & 1
