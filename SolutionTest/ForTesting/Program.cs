@@ -6,8 +6,8 @@ namespace ForTesting
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine(isSmooth(72));
-            Console.WriteLine(Math.Sqrt(100));
+            Console.WriteLine(isSmooth(350));
+          //  Console.WriteLine(Math.Sqrt(100));
 
 
         }
