@@ -1,30 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-namespace ForTesting
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections;
+
+namespace Translate
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(isSmooth(350));
-          //  Console.WriteLine(Math.Sqrt(100));
+            ArrayList str = new ArrayList();
+            str.AddRange(new string[] { "1", "2", "3" });
 
+            Console.WriteLine("This collection has {0} items.", str.Count);
+            Console.WriteLine();
 
-        }
-        static bool isSmooth(int n)
-        {
-            for (int i = 2; i < Math.Sqrt(n); ++i)
-            {
-                for(int j = 2; j < Math.Sqrt(n); ++j)
-                {
-                    if(Math.Pow(i, j) == n)
-                    {
-                        return true;
-                    }
-                }
-            }
+            str.Add("4");
 
-            return false;
+            Console.WriteLine("This collection has {0} items.", str.Count);
+            Console.WriteLine();
+
+            str.RemoveAt(2);
+
+            Console.WriteLine("This collection has {0} items.", str.Count);
+            Console.WriteLine();
+
         }
     }
 }
