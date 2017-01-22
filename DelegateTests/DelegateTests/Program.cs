@@ -29,6 +29,10 @@ namespace DelegateTests
 
             BinaryOp b = new BinaryOp(SimpleMath.Add);
             Console.WriteLine($"10 + 10 is {b(10, 10)}");
+
+            b = new BinaryOp(SimpleMath.Substract);
+            Console.WriteLine($"10 - 10 is {b(10, 10)}");
+
         }
     }
 }
