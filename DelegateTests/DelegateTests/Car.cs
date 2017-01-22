@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
- 
+
 namespace DelegateTests
 {
     public class Car
@@ -31,6 +27,32 @@ namespace DelegateTests
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
         {
             listOfHandlers = methodToCall;
+        }
+
+        public void Accelerate(int delta)
+        {
+            if (carIsDead)
+            {
+                listOfHandlers?.Invoke("Sorry, this car is dead...");
+            }
+            else
+            {
+                CurrentSpeed += delta;
+
+                if (10 == (MaxSpeed - CurrentSpeed)  && listOfHandlers != null)
+                {
+                    listOfHandlers("Careful buddy! Gonna blow!");
+                }
+                if (CurrentSpeed >= MaxSpeed)
+                {
+                    carIsDead = true;
+                }
+                else
+                {
+                    Console.WriteLine("CurrentSpeed = {0}", CurrentSpeed);
+                }
+            }
+
         }
     }
 }

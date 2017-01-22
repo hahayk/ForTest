@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DelegateTests
 {
@@ -20,19 +16,28 @@ namespace DelegateTests
         }
     }
 
-
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("***** Simple Delegate Example *****\n");
+            Console.WriteLine("***** Delegates as event enablers *****\n");
 
-            BinaryOp b = new BinaryOp(SimpleMath.Add);
-            Console.WriteLine($"10 + 10 is {b(10, 10)}");
+            Car c1 = new Car("SlugBug", 100, 10);
+            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
 
-            b = new BinaryOp(SimpleMath.Substract);
-            Console.WriteLine($"10 - 10 is {b(10, 10)}");
+            Console.WriteLine("***** Speeding up *****");
+            for (int i = 0; i < 6; i++)
+            {
+                c1.Accelerate(20);
+                Console.ReadLine();
+            }
+        }
 
+        public static void OnCarEngineEvent(string msg)
+        {
+            Console.WriteLine("\n***** Message From Car Object *****");
+            Console.WriteLine("=> {0}", msg);
+            Console.WriteLine("***********************************\n"); 
         }
     }
 }
