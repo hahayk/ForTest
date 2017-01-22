@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace DelegateTests
 {
     public class Car
@@ -26,7 +27,18 @@ namespace DelegateTests
 
         public void RegisterWithCarEngine(CarEngineHandler methodToCall)
         {
-            listOfHandlers = methodToCall;
+            //working
+            //listOfHandlers += methodToCall;
+            
+            //not working
+            if (listOfHandlers == null)
+            {
+                listOfHandlers = methodToCall;
+            }
+            else
+            {
+                Delegate.Combine(listOfHandlers, methodToCall);
+            }
         }
 
         public void Accelerate(int delta)

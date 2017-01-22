@@ -24,6 +24,7 @@ namespace DelegateTests
 
             Car c1 = new Car("SlugBug", 100, 10);
             c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent));
+            c1.RegisterWithCarEngine(new Car.CarEngineHandler(OnCarEngineEvent2));
 
             Console.WriteLine("***** Speeding up *****");
             for (int i = 0; i < 6; i++)
@@ -39,5 +40,11 @@ namespace DelegateTests
             Console.WriteLine("=> {0}", msg);
             Console.WriteLine("***********************************\n"); 
         }
+
+        public static void OnCarEngineEvent2(string msg)
+        {
+            Console.WriteLine("=> {0}", msg.ToUpper());
+        }
+
     }
 }
