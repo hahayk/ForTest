@@ -18,6 +18,7 @@ namespace Translate
             Console.WriteLine("This collection has {0} items.", str.Count);
             Console.WriteLine();
 
+
             str.Add("4");
 
             Console.WriteLine("This collection has {0} items.", str.Count);
