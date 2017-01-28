@@ -10,6 +10,6 @@ namespace DoNothing
     {
         static void Main(string[] args)
         {
-        }
+        } 
     }
 }

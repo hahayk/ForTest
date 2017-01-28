@@ -14,6 +14,11 @@ namespace DelegateTests
         {
             return x - y;
         }
+
+        public float Division(int x, int y)
+        {
+            return x / y;
+        }
     }
 
     class Program
@@ -21,6 +26,11 @@ namespace DelegateTests
         static void Main(string[] args)
         {
             Console.WriteLine("***** Delegates as event enablers *****\n");
+
+            Delegate DV
+
+            SimpleMath sm = new SimpleMath();
+            sm.Division += 
 
             Car c1 = new Car("SlugBug", 100, 10);
             c1.RegisterWithCarEngine(OnCarEngineEvent);
