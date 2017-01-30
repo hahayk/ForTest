@@ -37,8 +37,8 @@ namespace LINQ_Test
 
             //show books price summary by published year
             var bookGroupBy = from book in bks
-                               group book.Price by book.Name into bPr
-                               select new { Price = bPr.Key, NAME = bPr.ToString()};
+                               group book.Price by book.Genre into bPr
+                               select new { Genre = bPr.Key, NAME = bPr.All()};
 
             foreach (var item in bookGroupBy)
             {   
