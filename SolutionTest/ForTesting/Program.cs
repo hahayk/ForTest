@@ -12,22 +12,32 @@ namespace Translate
     {
         static void Main(string[] args)
         {
-            ArrayList str = new ArrayList();
-            str.AddRange(new string[] { "1", "2", "3" });
 
-            Console.WriteLine("This collection has {0} items.", str.Count);
-            Console.WriteLine();
+            int[] numbers = { 5, 1, 2, 3, 4, 5 };
+            int sum = numbers.Count();
+            for (int i = 1; i <= numbers[0]; ++i)
+            {
+                sum += numbers[i];
+            }
+
+            Console.WriteLine(sum);
+
+            //ArrayList str = new ArrayList();
+            //str.AddRange(new string[] { "1", "2", "3" });
+
+            //Console.WriteLine("This collection has {0} items.", str.Count);
+            //Console.WriteLine();
 
 
-            str.Add("4");
+            //str.Add("4");
 
-            Console.WriteLine("This collection has {0} items.", str.Count);
-            Console.WriteLine();
+            //Console.WriteLine("This collection has {0} items.", str.Count);
+            //Console.WriteLine();
 
-            str.RemoveAt(2);
+            //str.RemoveAt(2);
 
-            Console.WriteLine("This collection has {0} items.", str.Count);
-            Console.WriteLine();
+            //Console.WriteLine("This collection has {0} items.", str.Count);
+            //Console.WriteLine();
 
         }
     }
