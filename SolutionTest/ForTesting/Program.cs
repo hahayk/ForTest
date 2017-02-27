@@ -12,6 +12,7 @@ namespace Translate
     {
         static void Main(string[] args)
         {
+            HashSet<int> t = new HashSet<int>();
 
             try
             {
