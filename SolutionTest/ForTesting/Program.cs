@@ -12,28 +12,17 @@ namespace Translate
     {
         static void Main(string[] args)
         {
-            HashSet<int> evenNumbers = new HashSet<int>();
-            HashSet<int> oddNumbers = new HashSet<int>();
+            var salmons = new List<string>();
+            salmons.Add("chinook");
+            salmons.Add("coho");
+            salmons.Add("pink");
+            salmons.Add("sockeye");
 
-            for (int i = 0; i < 5; i++)
+
+            foreach (var salmon in salmons)
             {
-                evenNumbers.Add(i * 2);
-                oddNumbers.Add((i * 2) + 1);
+                Console.WriteLine(salmon + " ");
             }
-
-            Console.WriteLine($"evenNumbers containg {evenNumbers.Count} elements");
-            DisplaySet(evenNumbers);
-
-            Console.WriteLine($"evenNumbers containg {evenNumbers.Count} elements");
-            DisplaySet(oddNumbers);
-
-
-            HashSet<int> numbers = new HashSet<int>(evenNumbers);
-            Console.WriteLine("numbers UnionWith oddNumbers...");
-            numbers.UnionWith(oddNumbers);
-
-            Console.Write("numbers contains {0} elements: ", numbers.Count);
-            DisplaySet(numbers);
         } 
 
         private static void DisplaySet(HashSet<int> set)
