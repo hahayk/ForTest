@@ -28,7 +28,7 @@ namespace Translate
             DisplaySet(oddNumbers);
 
 
-            HashSet<int> numbers = new HashSet<int>();
+            HashSet<int> numbers = new HashSet<int>(evenNumbers);
             Console.WriteLine("numbers UnionWith oddNumbers...");
             numbers.UnionWith(oddNumbers);
 
