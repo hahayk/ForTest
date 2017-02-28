@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Collections;
 
 namespace Translate
 {
@@ -12,28 +10,30 @@ namespace Translate
     {
         static void Main(string[] args)
         {
-            var salmons = new List<string>();
-            salmons.Add("chinook");
-            salmons.Add("coho");
-            salmons.Add("pink");
-            salmons.Add("sockeye");
-
-
-            foreach (var salmon in salmons)
-            {
-                Console.WriteLine(salmon + " ");
-            }
-        } 
-
-        private static void DisplaySet(HashSet<int> set)
-        {
-            Console.Write("{");
-            foreach (var item in set)
-            {
-                Console.Write($"{item}");
-            }
-
-            Console.WriteLine("}");
         }
+
+        public static Dictionary<string, Element> BuildDictionary()
+        {
+            var elements = new Directory<string, Element>();
+
+        }
+
+        private static void AddToDictionary(Dictionary<String, Element> elements,
+            string symbol, string name, int atomicNumber)
+        {
+            Element theElement = new Element();
+            theElement.Symbol = symbol;
+            theElement.Name = name;
+            theElement.AtomicNumber = atomicNumber;
+            elements.Add(ConsoleKey: theElement.Symbol, value: theElement);
+        }
+
+    }
+
+    public class Element
+    {
+        public string Symbol { get; set; }
+        public string Name { get; set; }
+        public int AtomicNumber { get; set; }
     }
 }
