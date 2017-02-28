@@ -20,19 +20,24 @@ namespace Translate
             {
                 Element theElement = kvp.Value;
                 Console.WriteLine($"key: {kvp.Key}");
-                Console.WriteLine($"values: {}");
+                Console.WriteLine($"values: {theElement.Symbol} {theElement.Name} {theElement.AtomicNumber}");
             }
         }
 
         public static Dictionary<string, Element> BuildDictionary()
         {
-            var elements = new Dictionary<string, Element>();
-            AddToDictionary(elements, "K", "Potassium", 19);
-            AddToDictionary(elements, "Ca", "Calcium", 20);
-            AddToDictionary(elements, "Sc", "Scandium", 21);
-            AddToDictionary(elements, "Ti", "Titanium", 22);
+            return new Dictionary<string, Element>
+    {
+        {"K",
+            new Element() { Symbol="K", Name="Potassium", AtomicNumber=19}},
+        {"Ca",
+            new Element() { Symbol="Ca", Name="Calcium", AtomicNumber=20}},
+        {"Sc",
+            new Element() { Symbol="Sc", Name="Scandium", AtomicNumber=21}},
+        {"Ti",
+            new Element() { Symbol="Ti", Name="Titanium", AtomicNumber=22}}
+    };
 
-            return elements;
         }
 
         private static void AddToDictionary(Dictionary<String, Element> elements,
@@ -44,6 +49,8 @@ namespace Translate
             theElement.AtomicNumber = atomicNumber;
             elements.Add(key: theElement.Symbol, value: theElement);
         }
+
+
 
     }
 
