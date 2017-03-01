@@ -50,7 +50,19 @@ namespace Translate
             elements.Add(key: theElement.Symbol, value: theElement);
         }
 
-
+        private static void FindDictionary(string symbol)
+        {
+            Dictionary<string, Element> elements = BuildDictionary();
+            if (elements.ContainsKey(symbol) == false)
+            {
+                Console.WriteLine(symbol + " not found");
+            }
+            else
+            {
+                Element theElement = elements[symbol];
+                Console.WriteLine("found: " + theElement.Name);
+            }
+        }
 
     }
 
