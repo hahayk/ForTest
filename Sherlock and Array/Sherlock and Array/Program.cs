@@ -11,21 +11,29 @@ namespace Sherlock_and_Array
     {
         static void Main(string[] args)
         {
-            List<int> arr = new List<int>() { 1, 2, 3, 4 };
+            List<int> arr = new List<int>() { 1, 2, 3, 3 };
+            bool isContain = false;
 
-            for (int i = 1; i < arr.Count-1; i++)
+            for (int i = 1; i < arr.Count - 1; i++)
             {
-                if (Sum(arr.GetRange(0, i-1)) == 
-                    Sum(arr.GetRange(i+1, arr.Count-1)))
+                if (arr.GetRange(0, i).Sum() ==
+                    arr.GetRange(i + 1, arr.Count - i - 1).Sum())
                 {
-                    Console.WriteLine("Yes");
-                }
-                else
-                {
-                    Console.WriteLine("No");
+                    isContain = true;
+                    break;
                 }
             }
-            
+
+
+            if (isContain)
+            {
+                Console.WriteLine("Yes");
+            }
+            else
+            {
+                Console.WriteLine("No");
+            }
+
         }
 
         private static int Sum(List<int> arrSum)
@@ -33,6 +41,6 @@ namespace Sherlock_and_Array
             return arrSum.Sum();
         }
 
-        
+
     }
 }
