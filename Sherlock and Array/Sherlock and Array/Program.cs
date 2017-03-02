@@ -20,41 +20,42 @@ namespace Sherlock_and_Array
                 //get array items from Console
                 int InputArraySize = Convert.ToInt32(Console.ReadLine());
 
-                //for (int j = 0; j < InputArraySize; j++)
+               // for (int j = 0; j < InputArraySize; j++)
                 {
-                    var str = Console.ReadLine();
-
-                    if(InputArraySize == 1)
+                    string [] strInputArr = Console.ReadLine().Split(' ');
+                    array = new List<int>(Array.ConvertAll(strInputArr, int.Parse));
+                    
+                    if (InputArraySize == 1)
                     {
                         Console.WriteLine("YES");
                         continue;
                     }
-                    if (InputArraySize == 2 )
+                    if (InputArraySize == 2)
                     {
                         Console.WriteLine("NO");
                         continue;
                     }
 
-                    string curStr = string.Empty;
-                    int curInd = 0;
+                    //string curStr = string.Empty;
+                    //int curInd = 0;
 
-                    for (int k = 0; k < str.Length; ++k, ++curInd)
-                    {
-                        if (str[k] != ' ')
-                        {
-                            curStr += str[k];
+                    //for (int k = 0; k < str.Length; ++k, ++curInd)
+                    //{
+                    //    if (str[k] != ' ')
+                    //    {
+                    //        curStr += str[k];
 
-                            if ((curInd + 1) </*= InputArraySize */str.Length && str[k + 1] != ' ')
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                array.Add(Convert.ToInt32(curStr.ToString()));
-                                curStr = string.Empty;
-                            }
-                        }
-                    }
+                    //        if ((curInd + 1) </*= InputArraySize */str.Length && str[k + 1] != ' ')
+                    //        {
+                    //            continue;
+                    //        }
+                    //        else
+                    //        {
+                    //            array.Add(Convert.ToInt32(curStr.ToString()));
+                    //            curStr = string.Empty;
+                    //        }
+                    //    }
+                    //}
                 }
 
                 Sum(array);
