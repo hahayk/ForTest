@@ -9,8 +9,8 @@ namespace Sherlock_and_Array
         static void Main(string[] args)
         {
             //test case count
-            int testCaseCnt = Convert.ToInt32(Console.ReadLine());
             List<int> array = new List<int>();
+            int testCaseCnt = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < testCaseCnt; i++)
             {
@@ -20,51 +20,26 @@ namespace Sherlock_and_Array
                 //get array items from Console
                 int InputArraySize = Convert.ToInt32(Console.ReadLine());
 
-               // for (int j = 0; j < InputArraySize; j++)
+                string[] strInputArr = Console.ReadLine().Split(' ');
+
+                if (InputArraySize == 1)
                 {
-                    string [] strInputArr = Console.ReadLine().Split(' ');
-                    array = new List<int>(Array.ConvertAll(strInputArr, int.Parse));
-                    
-                    if (InputArraySize == 1)
-                    {
-                        Console.WriteLine("YES");
-                        continue;
-                    }
-                    if (InputArraySize == 2)
-                    {
-                        Console.WriteLine("NO");
-                        continue;
-                    }
-
-                    //string curStr = string.Empty;
-                    //int curInd = 0;
-
-                    //for (int k = 0; k < str.Length; ++k, ++curInd)
-                    //{
-                    //    if (str[k] != ' ')
-                    //    {
-                    //        curStr += str[k];
-
-                    //        if ((curInd + 1) </*= InputArraySize */str.Length && str[k + 1] != ' ')
-                    //        {
-                    //            continue;
-                    //        }
-                    //        else
-                    //        {
-                    //            array.Add(Convert.ToInt32(curStr.ToString()));
-                    //            curStr = string.Empty;
-                    //        }
-                    //    }
-                    //}
+                    Console.WriteLine("YES");
+                    continue;
+                }
+                if (InputArraySize == 2)
+                {
+                    Console.WriteLine("NO");
+                    continue;
                 }
 
+                array = new List<int>(Array.ConvertAll(strInputArr, int.Parse));
                 Sum(array);
             }
         }
 
         private static void Sum(List<int> arrSum)
         {
-            //List<int> arr = new List<int>() { 1, 2, 3, 3 };
             bool isContain = false;
 
             for (int i = 1; i < arrSum.Count - 1; i++)
@@ -86,7 +61,5 @@ namespace Sherlock_and_Array
                 Console.WriteLine("NO");
             }
         }
-
-
     }
 }
