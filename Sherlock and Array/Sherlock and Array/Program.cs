@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sherlock_and_Array
 {
-    class Program
+    class Solution
     {
         static void Main(string[] args)
         {
@@ -19,6 +19,17 @@ namespace Sherlock_and_Array
 
                 //get array items from Console
                 int InputArraySize = Convert.ToInt32(Console.ReadLine());
+                if(InputArraySize == 1)
+                {
+                    Console.WriteLine("YES");
+                    return;
+                }
+                if (InputArraySize == 2 )
+                {
+                    Console.WriteLine("NO");
+                    return;
+                }
+
                 //for (int j = 0; j < InputArraySize; j++)
                 {
                     var str = Console.ReadLine();
@@ -43,6 +54,7 @@ namespace Sherlock_and_Array
                         }
                     }
                 }
+
                 Sum(array);
             }
         }
