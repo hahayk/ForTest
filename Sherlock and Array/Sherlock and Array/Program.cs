@@ -19,20 +19,22 @@ namespace Sherlock_and_Array
 
                 //get array items from Console
                 int InputArraySize = Convert.ToInt32(Console.ReadLine());
-                if(InputArraySize == 1)
-                {
-                    Console.WriteLine("YES");
-                    return;
-                }
-                if (InputArraySize == 2 )
-                {
-                    Console.WriteLine("NO");
-                    return;
-                }
 
                 //for (int j = 0; j < InputArraySize; j++)
                 {
                     var str = Console.ReadLine();
+
+                    if(InputArraySize == 1)
+                    {
+                        Console.WriteLine("YES");
+                        continue;
+                    }
+                    if (InputArraySize == 2 )
+                    {
+                        Console.WriteLine("NO");
+                        continue;
+                    }
+
                     string curStr = string.Empty;
                     int curInd = 0;
 
