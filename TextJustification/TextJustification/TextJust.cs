@@ -16,23 +16,35 @@ namespace TextJustification
             List<string> returnWord = new List<string>();
             int startIndex = 0;
             len = L;
+            int forCnt = 0;
 
             foreach (var word in words)
             {
+                if (words.Count () == 1)
+                {
+                    returnWord.Add(word);
+                    continue;
+                }
+
                 if (MakeSentence(word) == 1)
                 {
+                    if (++forCnt == words.Count())
+                    {
+                        returnWord.Add(currentString);
+                    }
+
                     continue;
                 }
                 else
                 {
                     int sz = currentString.Length;
-                    if (currentString[sz -1] == ' ')
+                    if (currentString[sz - 1] == ' ')
                     {
                         sz -= 1;
                     }
                     returnWord.Add(currentString.Substring(0, sz));
 
-              
+
                     currentString = word;
                 }
             }
@@ -42,12 +54,12 @@ namespace TextJustification
                 //only 1 word
                 if (!returnWord[i].Contains(" ") && returnWord[i].Length < L)
                 {
-                    returnWord[i].Insert(returnWord[i].Length - 1, new string(' ', L - returnWord[i].Length));
+                    returnWord[i] = returnWord[i].Insert(returnWord[i].Length, new string(' ', L - returnWord[i].Length));
                 }
                 //contains only 2 words and its len is < than given L 
                 else if (returnWord[i].Split(' ').Count() == 2 && returnWord[i].Length < L)
                 {
-                    returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));
+                    returnWord[i] = returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));
                 }
                 //contains more than 2 words and its lenght is less than given L
                 else if (returnWord[i].Length < L)
@@ -73,7 +85,7 @@ namespace TextJustification
                         {
                             ++wordPos;
                         }
-                        if (wordPos  == splitedLine.Length - 1)
+                        if (wordPos == splitedLine.Length - 1)
                         {
                             wordPos = 0;
                         }
@@ -103,15 +115,16 @@ namespace TextJustification
                     currentString += " " + curStr;
                 }
 
-                if (currentString.Length + 1 <= len)
-                {
-                    currentString += " ";
-                }
-
                 if (currentString.Length == len)
                 {
                     return 0;
                 }
+
+                //if (currentString.Length + 1 <= len)
+                //{
+                //    currentString += " ";
+                //}
+
 
                 //means that can be added another word
                 return 1;
