@@ -29,6 +29,19 @@ namespace TextJustification
                 }
             }
 
+            for (int i = 0; i < returnWord.Count; i++)
+            {   
+                //only 1 word
+                if(!returnWord[i].Contains(" ") && returnWord[i].Length < L)
+                {
+                    returnWord[i].Insert(returnWord[i].Length - 1, new string(' ', L - returnWord[i].Length));
+                }
+                else if (returnWord[i].Split(' ').Count() == 2 && returnWord[i].Length < L)
+                {
+
+                }
+            }
+
 
             return words;
         }
