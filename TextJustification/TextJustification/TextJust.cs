@@ -8,14 +8,14 @@ namespace TextJustification
 {
     public class TextJust
     {
-        string currentString = string.Empty;
-        int len = 0;
-
         public string[] textJustification(string[] words, int L)
         {
+            string currentString = string.Empty;
+            int len = L;
+
             List<string> returnWord = new List<string>();
             int startIndex = 0;
-            len = L;
+
             int forCnt = 0;
 
             foreach (var word in words)
@@ -26,7 +26,7 @@ namespace TextJustification
                     continue;
                 }
 
-                if (MakeSentence(word) == 1)
+                if (MakeSentence(word, ref currentString, L) == 1)
                 {
                     if (++forCnt == words.Count())
                     {
@@ -63,7 +63,7 @@ namespace TextJustification
                 //contains only 2 words and its len is < than given L 
                 else if (returnWord[i].Split(' ').Count() == 2 && returnWord[i].Length < L)
                 {
-                    returnWord[i] = returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));
+                    returnWord[i] = returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));        
                 }
                 //contains more than 2 words and its lenght is less than given L
                 else if (returnWord[i].Length < L)
@@ -98,13 +98,11 @@ namespace TextJustification
 
                 }
             }
-
-            string[] retVal = { };
-
-            return  retVal;
+           
+            return  returnWord.ToArray();
         }
 
-        int MakeSentence(string curStr)
+        int MakeSentence(string curStr, ref string currentString, int len)
         {
             //if((currentString.Length + curStr.Length + 1 /*1 for space between words*/) <= len)
             if ((currentString.Length + curStr.Length) <= len)
@@ -127,7 +125,7 @@ namespace TextJustification
 
                 //if (currentString.Length + 1 <= len)
                 //{
-                //    currentString += " ";
+                //    return 0;
                 //}
 
 
