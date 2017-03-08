@@ -36,9 +36,10 @@ namespace TextJustification
                 {
                     returnWord[i].Insert(returnWord[i].Length - 1, new string(' ', L - returnWord[i].Length));
                 }
+                //contains only 2 words and its len is < than given L 
                 else if (returnWord[i].Split(' ').Count() == 2 && returnWord[i].Length < L)
                 {
-
+                    returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));
                 }
             }
 
