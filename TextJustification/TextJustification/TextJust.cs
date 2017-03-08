@@ -25,7 +25,14 @@ namespace TextJustification
                 }
                 else
                 {
-                    returnWord.Add(currentString.Substring(0, currentString.Length - 1));
+                    int sz = currentString.Length;
+                    if (currentString[sz -1] == ' ')
+                    {
+                        sz -= 1;
+                    }
+                    returnWord.Add(currentString.Substring(0, sz));
+
+              
                     currentString = word;
                 }
             }
@@ -45,14 +52,31 @@ namespace TextJustification
                 //contains more than 2 words and its lenght is less than given L
                 else if (returnWord[i].Length < L)
                 {
+                    //split line by words without spaces
+                    string[] splitedLine = returnWord[i].Split(' ');
+                    int wordPos = 0;
+
                     do
                     {
-                        if ((startIndex = returnWord[i].IndexOf(' ', startIndex + 1)) == -1)
+                        startIndex = returnWord[i].IndexOf(splitedLine[wordPos], startIndex) + splitedLine[wordPos].Length;
+
+                        //if ((startIndex = returnWord[i].IndexOf(' ', startIndex + 1)) == -1)
+                        //{
+                        //    startIndex = returnWord[i].IndexOf(' ', 0);
+                        //}
+                        ////get index of space                        
+                        returnWord[i].Insert(startIndex + 1, " ");
+
+                        ++wordPos;
+                        wordPos %= splitedLine.Length;
+                        if (splitedLine[wordPos].Length == 0)
                         {
-                            startIndex = 0;
+                            ++wordPos;
                         }
-                        //get index of space                        
-                        returnWord[i].Insert(startIndex, " ");
+                        if (wordPos  == splitedLine.Length - 1)
+                        {
+                            wordPos = 0;
+                        }
 
                     } while (returnWord[i].Count() < len);
 
@@ -82,6 +106,11 @@ namespace TextJustification
                 if (currentString.Length + 1 <= len)
                 {
                     currentString += " ";
+                }
+
+                if (currentString.Length == len)
+                {
+                    return 0;
                 }
 
                 //means that can be added another word
