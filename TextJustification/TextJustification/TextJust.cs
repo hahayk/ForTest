@@ -43,9 +43,13 @@ namespace TextJustification
                         sz -= 1;
                     }
                     returnWord.Add(currentString.Substring(0, sz));
-
-
+                    
                     currentString = word;
+
+                    if (++forCnt == words.Count())
+                    {
+                        returnWord.Add(currentString);
+                    }
                 }
             }
 
@@ -95,8 +99,9 @@ namespace TextJustification
                 }
             }
 
+            string[] retVal = { };
 
-            return words;
+            return  retVal;
         }
 
         int MakeSentence(string curStr)
