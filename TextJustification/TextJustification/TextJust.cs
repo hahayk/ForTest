@@ -14,6 +14,7 @@ namespace TextJustification
         public string[] textJustification(string[] words, int L)
         {
             List<string> returnWord = new List<string>();
+            int startIndex = 0;
             len = L;
 
             foreach (var word in words)
@@ -30,9 +31,9 @@ namespace TextJustification
             }
 
             for (int i = 0; i < returnWord.Count; i++)
-            {   
+            {
                 //only 1 word
-                if(!returnWord[i].Contains(" ") && returnWord[i].Length < L)
+                if (!returnWord[i].Contains(" ") && returnWord[i].Length < L)
                 {
                     returnWord[i].Insert(returnWord[i].Length - 1, new string(' ', L - returnWord[i].Length));
                 }
@@ -40,6 +41,21 @@ namespace TextJustification
                 else if (returnWord[i].Split(' ').Count() == 2 && returnWord[i].Length < L)
                 {
                     returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));
+                }
+                //contains more than 2 words and its lenght is less than given L
+                else if (returnWord[i].Length < L)
+                {
+                    do
+                    {
+                        if ((startIndex = returnWord[i].IndexOf(' ', startIndex + 1)) == -1)
+                        {
+                            startIndex = 0;
+                        }
+                        //get index of space                        
+                        returnWord[i].Insert(startIndex, " ");
+
+                    } while (returnWord[i].Count() < len);
+
                 }
             }
 
