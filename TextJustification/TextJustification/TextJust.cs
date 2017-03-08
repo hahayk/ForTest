@@ -65,7 +65,7 @@ namespace TextJustification
                         //    startIndex = returnWord[i].IndexOf(' ', 0);
                         //}
                         ////get index of space                        
-                        returnWord[i].Insert(startIndex + 1, " ");
+                        returnWord[i] = returnWord[i].Insert(startIndex + 1, " ");
 
                         ++wordPos;
                         wordPos %= splitedLine.Length;
