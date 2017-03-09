@@ -55,7 +55,7 @@ namespace TextJustification
                         currentString = string.Empty;
                     }
 
-                    if (++forCnt == words.Count())
+                    if (++forCnt == words.Count() && nextLine == false)
                     {
                         returnWord.Add(currentString);
                     }
@@ -114,7 +114,7 @@ namespace TextJustification
         int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine)
         {
             //if((currentString.Length + curStr.Length + 1 /*1 for space between words*/) <= len)
-            if ((currentString.Length + curStr.Length) <= len)
+            if ((currentString.Length + curStr.Length) < len)
             {
                 if (currentString.Length == 0)
                 {
