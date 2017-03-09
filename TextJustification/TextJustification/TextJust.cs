@@ -134,15 +134,14 @@ namespace TextJustification
                     nextLine = true;
                     return 0;
                 }
-
-                //if (currentString.Length + 1 <= len)
-                //{
-                //    return 0;
-                //}
-
-
+                
                 //means that can be added another word
                 return 1;
+            }
+
+            if (curStr.Length == len)
+            {
+                currentString = curStr;
             }
 
             //means that can NOT be added a word anymore
