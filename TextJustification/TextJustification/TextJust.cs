@@ -17,6 +17,7 @@ namespace TextJustification
             int startIndex = 0;
 
             int forCnt = 0;
+            bool nextLine = false;
 
             foreach (var word in words)
             {
@@ -26,7 +27,7 @@ namespace TextJustification
                     continue;
                 }
 
-                if (MakeSentence(word, ref currentString, L) == 1)
+                if (MakeSentence(word, ref currentString, L, ref nextLine) == 1)
                 {
                     if (++forCnt == words.Count())
                     {
@@ -43,8 +44,16 @@ namespace TextJustification
                         sz -= 1;
                     }
                     returnWord.Add(currentString.Substring(0, sz));
-                    
-                    currentString = word;
+
+                    if (!nextLine)
+                    {
+                        currentString = word;
+                        nextLine = false;
+                    }
+                    else
+                    {
+                        currentString = string.Empty;
+                    }
 
                     if (++forCnt == words.Count())
                     {
@@ -102,7 +111,7 @@ namespace TextJustification
             return  returnWord.ToArray();
         }
 
-        int MakeSentence(string curStr, ref string currentString, int len)
+        int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine)
         {
             //if((currentString.Length + curStr.Length + 1 /*1 for space between words*/) <= len)
             if ((currentString.Length + curStr.Length) <= len)
@@ -118,8 +127,11 @@ namespace TextJustification
                     currentString += " " + curStr;
                 }
 
+                nextLine = false;
+
                 if (currentString.Length == len)
                 {
+                    nextLine = true;
                     return 0;
                 }
 
