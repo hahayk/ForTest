@@ -25,7 +25,7 @@ namespace TextJustification
                     continue;
                 }
 
-                if (MakeSentence(word, ref currentString, L, ref nextLine, ref equalLen) == 1)
+                if (MakeSentence(word, ref currentString, L, ref nextLine, ref equalLen, ref forCnt) == 1)
                 {
                     if (++forCnt == words.Count())
                     {
@@ -36,11 +36,13 @@ namespace TextJustification
                 }
                 else if (equalLen)
                 {
+                    ++forCnt;
                     //if (++forCnt == words.Count() && nextLine == false)
                     {
                         returnWord.Add(currentString);
                     }
                     equalLen = false;
+                    currentString = string.Empty;
                 }
                 else
                 {
@@ -61,9 +63,11 @@ namespace TextJustification
                         currentString = string.Empty;
                     }
 
+                    //last word
                     if (++forCnt == words.Count() && nextLine == false)
                     {
                         returnWord.Add(currentString);
+                        currentString = string.Empty;
                     }
                 }
             }
@@ -117,7 +121,7 @@ namespace TextJustification
             return  returnWord.ToArray();
         }
 
-        int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine, ref bool equalLen)
+        int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine, ref bool equalLen, ref int forCnt)
         {
             equalLen = false;
             //if((currentString.Length + curStr.Length + 1 /*1 for space between words*/) <= len)
@@ -146,7 +150,7 @@ namespace TextJustification
                 return 1;
             }
 
-            if (curStr.Length == len)
+            if (curStr.Length == len /*|| forCnt != len */)
             {
                 currentString = curStr;
                 equalLen = true;
