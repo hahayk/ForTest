@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TextJustification
 {
@@ -65,7 +62,7 @@ namespace TextJustification
             for (int i = 0; i < returnWord.Count; i++)
             {
                 //only 1 word
-                if (!returnWord[i].Contains(" ") && returnWord[i].Length < L)
+                if ((!returnWord[i].Contains(" ") && returnWord[i].Length < L) || i == returnWord.Count - 1)
                 {
                     returnWord[i] = returnWord[i].Insert(returnWord[i].Length, new string(' ', L - returnWord[i].Length));
                 }
