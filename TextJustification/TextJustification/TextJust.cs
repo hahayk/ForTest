@@ -15,6 +15,7 @@ namespace TextJustification
 
             int forCnt = 0;
             bool nextLine = false;
+            bool equalLen = false;
 
             foreach (var word in words)
             {
@@ -24,7 +25,7 @@ namespace TextJustification
                     continue;
                 }
 
-                if (MakeSentence(word, ref currentString, L, ref nextLine) == 1)
+                if (MakeSentence(word, ref currentString, L, ref nextLine, ref equalLen) == 1)
                 {
                     if (++forCnt == words.Count())
                     {
@@ -32,6 +33,14 @@ namespace TextJustification
                     }
 
                     continue;
+                }
+                else if (equalLen)
+                {
+                    //if (++forCnt == words.Count() && nextLine == false)
+                    {
+                        returnWord.Add(currentString);
+                    }
+                    equalLen = false;
                 }
                 else
                 {
@@ -108,8 +117,9 @@ namespace TextJustification
             return  returnWord.ToArray();
         }
 
-        int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine)
+        int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine, ref bool equalLen)
         {
+            equalLen = false;
             //if((currentString.Length + curStr.Length + 1 /*1 for space between words*/) <= len)
             if ((currentString.Length + curStr.Length) < len)
             {
@@ -132,13 +142,14 @@ namespace TextJustification
                     return 0;
                 }
                 
-                //means that can be added another word
+                //can be added another word
                 return 1;
             }
 
             if (curStr.Length == len)
             {
                 currentString = curStr;
+                equalLen = true;
             }
 
             //means that can NOT be added a word anymore
