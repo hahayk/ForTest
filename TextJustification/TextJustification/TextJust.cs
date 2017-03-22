@@ -19,7 +19,7 @@ namespace TextJustification
 
             foreach (var word in words)
             {
-                if (words.Count () == 1)
+                if (words.Count() == 1)
                 {
                     returnWord.Add(word);
                     continue;
@@ -37,10 +37,8 @@ namespace TextJustification
                 else if (equalLen)
                 {
                     ++forCnt;
-                    //if (++forCnt == words.Count() && nextLine == false)
-                    {
-                        returnWord.Add(currentString);
-                    }
+                    returnWord.Add(currentString);
+
                     equalLen = false;
                     currentString = string.Empty;
                 }
@@ -82,7 +80,7 @@ namespace TextJustification
                 //contains only 2 words and its len is < than given L 
                 else if (returnWord[i].Split(' ').Count() == 2 && returnWord[i].Length < L)
                 {
-                    returnWord[i] = returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));        
+                    returnWord[i] = returnWord[i].Insert(returnWord[i].IndexOf(' '), new string(' ', L - returnWord[i].Length));
                 }
                 //contains more than 2 words and its lenght is less than given L
                 else if (returnWord[i].Length < L)
@@ -94,12 +92,6 @@ namespace TextJustification
                     do
                     {
                         startIndex = returnWord[i].IndexOf(splitedLine[wordPos], startIndex) + splitedLine[wordPos].Length;
-
-                        //if ((startIndex = returnWord[i].IndexOf(' ', startIndex + 1)) == -1)
-                        //{
-                        //    startIndex = returnWord[i].IndexOf(' ', 0);
-                        //}
-                        ////get index of space                        
                         returnWord[i] = returnWord[i].Insert(startIndex + 1, " ");
 
                         ++wordPos;
@@ -117,14 +109,13 @@ namespace TextJustification
 
                 }
             }
-           
-            return  returnWord.ToArray();
+
+            return returnWord.ToArray();
         }
 
         int MakeSentence(string curStr, ref string currentString, int len, ref bool nextLine, ref bool equalLen, ref int forCnt)
         {
             equalLen = false;
-            //if((currentString.Length + curStr.Length + 1 /*1 for space between words*/) <= len)
             if ((currentString.Length + curStr.Length) < len)
             {
                 if (currentString.Length == 0)
@@ -145,12 +136,12 @@ namespace TextJustification
                     nextLine = true;
                     return 0;
                 }
-                
+
                 //can be added another word
                 return 1;
             }
 
-            if (curStr.Length == len /*|| forCnt != len */)
+            if (curStr.Length == len)
             {
                 currentString = curStr;
                 equalLen = true;

@@ -11,16 +11,16 @@ namespace TextJustification
         static void Main(string[] args)
         {
             TextJust obj = new TextJust();
-            //string[] words = {"a", "b", "c", "d", "e"}; // output is "a", "b", "c", "d", "e", "e"
+            string[] words = { "a" };//, "b", "c", "d", "e"}; // output is "a", "b", "c", "d", "e", "e"
                                                         // string[] words = { "Two", "words."}; // output shoud be {"Two words. "}
-string[] words = { "Listen", 
-            "to", 
- "many,", 
- "speak", 
- "to", 
- "a", 
- "few."};
-            int L = 6;
+//string[] words = { "Listen", 
+//            "to", 
+// "many,", 
+// "speak", 
+// "to", 
+// "a", 
+// "few."};
+            int L = 2;
             var retWord = obj.textJustification(words, L);
             foreach (var item in retWord)
             {
