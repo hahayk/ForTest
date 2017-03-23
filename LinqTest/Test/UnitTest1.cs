@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using LinqTest;
 
 namespace Test
 {
@@ -9,7 +10,19 @@ namespace Test
         [TestMethod]
         public void TestMethod1()
         {
+
         }
+
+        [TestMethod]
+        public void find()
+        {
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            var result = repository.Find(customerList, 2);
+        }
+
+
 
 
     }
