@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace LinqTest
 {
@@ -10,6 +6,14 @@ namespace LinqTest
     {
         static void Main(string[] args)
         {
+        }
+
+        public void find()
+        {
+            CustomerRepository repository = new CustomerRepository();
+            var customerList = repository.Retrieve();
+
+            var result = repository.Find(customerList, 2);
         }
     }
 }
