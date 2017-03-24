@@ -32,10 +32,15 @@ namespace LinqTest
             //    return c.CustomerId == customerid;
             //});
 
-            foundCustomer = customerList.Where(c =>
-                        c.CustomerId == customerid)
-                        .Skip(1)
-                        .FirstOrDefault();
+            //foundCustomer = customerList.Where(c =>
+            //            c.CustomerId == customerid)
+            //            .Skip(1)
+            //            .FirstOrDefault();
+
+            foundCustomer = customerList.FirstOrDefault(c =>
+                c.CustomerId == customerid);
+
+
 
             return foundCustomer;
         }
@@ -79,5 +84,26 @@ namespace LinqTest
             };
             return custList;
         }
+
+        public IEnumerable<Customer> SortByName(List<Customer> customerList)
+        {
+            return customerList.OrderBy(c => c.LastName)
+                .ThenBy(c => c.FirtsName);
+        }
+
+        public IEnumerable<Customer> SortByNameInReverse(List<Customer> customerList)
+        {
+            //return customerList.OrderByDescending(c => c.LastName)
+            //    .ThenByDescending(c => c.FirtsName);
+
+            return SortByName(customerList).Reverse();
+        }
+
+        public IEnumerable<Customer> SortByType(List<Customer> customerList)
+        {
+            return customerList.OrderByDescending(c => c.CustomerTypeId.HasValue)
+                .ThenBy(c => c.CustomerTypeId);
+        }
+
     }
 }
