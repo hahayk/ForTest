@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LibraryTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Library\Library.csproj">
+      <Project>{5aaeed66-6406-4450-9c45-2a3a55736591}</Project>
+      <Name>Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LinqTest\LinqTest.csproj">
       <Project>{CB8BFF85-111E-47B5-90ED-FF9EEC76CDF4}</Project>
       <Name>LinqTest</Name>
