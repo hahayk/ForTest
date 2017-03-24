@@ -1,20 +1,42 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace LinqTest
 {
     public class CustomerRepository
-     {
+    {
         public Customer Find(List<Customer> customerList, int customerid)
         {
             Customer foundCustomer = null;
-            foreach (var c in customerList)
-            {
-                if (c.CustomerId == customerid)
-                {
-                    foundCustomer = c;
-                    break;
-                }
-            }
+            //foreach (var c in customerList)
+            //{
+            //    if (c.CustomerId == customerid)
+            //    {
+            //        foundCustomer = c;
+            //        break;
+            //    }
+            //}
+
+            //var query = from c in customerList
+            //            where c.CustomerId == customerid
+            //            select c;
+
+
+            //foundCustomer = query.First();
+            //foundCustomer = customerList.FirstOrDefault(c=>c.CustomerId == customerid);
+
+            //foundCustomer = customerList.FirstOrDefault(c =>
+            //{
+            //    Debug.WriteLine(c.LastName);
+            //    return c.CustomerId == customerid;
+            //});
+
+            foundCustomer = customerList.Where(c =>
+                        c.CustomerId == customerid)
+                        .Skip(1)
+                        .FirstOrDefault();
+
             return foundCustomer;
         }
 
