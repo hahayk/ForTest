@@ -45,6 +45,11 @@ namespace LinqTest
             return foundCustomer;
         }
 
+        public IEnumerable<Customer> RetrieveEmptyList()
+        {
+            return Enumerable.Repeat(new Customer(), 5);
+        }
+
         public List<Customer> Retrieve()
         {
             List<Customer> custList = new List<Customer>

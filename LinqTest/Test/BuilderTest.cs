@@ -22,5 +22,18 @@ namespace Test
 
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void BuildStringSequenceTest()
+        {
+            Builder listBuilder = new Builder();
+            var result = listBuilder.BuildStringSequence();
+            foreach (var item in result)
+            {
+                TestContext.WriteLine(item);
+            }
+
+            Assert.IsNotNull(result);
+        }
     }
 }
