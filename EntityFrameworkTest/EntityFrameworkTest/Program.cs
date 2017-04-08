@@ -14,14 +14,14 @@ namespace EntityFrameworkTest
         static void Main(string[] args)
         {
             Console.WriteLine("**** Very Simple Connection Factory *****\n");
-            IDbConnection myConnection = GetConnection(DataProvider.SqlServer);
+            IDbConnection myConnection = GetConnection(DataProvider.Sql);
             Console.WriteLine($"Your connection is {myConnection.GetType().Name}");
             Console.ReadLine();
         }
 
         enum DataProvider
         {
-            SqlServer, OleDb, Odbc, None
+            Sql, OleDb, Odbc, None
         }
 
         static IDbConnection GetConnection(DataProvider dataProvider)
@@ -29,7 +29,7 @@ namespace EntityFrameworkTest
             IDbConnection connection = null;
             switch (dataProvider)
             {
-                case DataProvider.SqlServer:
+                case DataProvider.Sql:
                     connection = new SqlConnection();
                     break;
                 case DataProvider.OleDb:
