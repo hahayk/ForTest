@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.Odbc;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+
+//public MeContext() : base(@"Data Source=compik;Initial Catalog=MyTestDb;Integrated Security=True") { }
+
 
 namespace EntityFrameworkTest
 {
@@ -11,30 +13,38 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
-            var vid = new Video
-            {
-                Title = "Hello Entity Framework",
-                Description = "Description Entity Framework"
-            };
-
-            var meContext = new MeContext();
-            meContext.Videos.Add(vid);
-            meContext.SaveChanges();
-
-            //meContext.Database.Delete();
+            Console.WriteLine("**** Very Simple Connection Factory *****\n");
+            IDbConnection myConnection = GetConnection(DataProvider.SqlServer);
+            Console.WriteLine($"Your connection is {myConnection.GetType().Name}");
+            Console.ReadLine();
         }
-    }
 
-    class Video
-    {
-        public int ID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-    }
+        enum DataProvider
+        {
+            SqlServer, OleDb, Odbc, None
+        }
 
-    class MeContext : DbContext
-    {
-        public MeContext() : base(@"Data Source=compik;Initial Catalog=MyTestDb;Integrated Security=True") {}
-        public DbSet<Video> Videos { get; set; }
+        static IDbConnection GetConnection(DataProvider dataProvider)
+        {
+            IDbConnection connection = null;
+            switch (dataProvider)
+            {
+                case DataProvider.SqlServer:
+                    connection = new SqlConnection();
+                    break;
+                case DataProvider.OleDb:
+                    connection = new OleDbConnection();
+                    break;
+                case DataProvider.Odbc:
+                    connection = new OdbcConnection();
+                    break;
+                default:
+                    break;
+            }
+
+            return connection;
+        }
+
     }
+    
 }
