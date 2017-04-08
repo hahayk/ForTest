@@ -50,6 +50,12 @@ namespace LinqTest
             return Enumerable.Repeat(new Customer(), 5);
         }
 
+        public IEnumerable<string> GetNames(List<Customer> customerList)
+        {
+            var query = customerList.Select(c => c.LastName + " " + c.FirtsName);
+            return query;
+        }
+
         public List<Customer> Retrieve()
         {
             List<Customer> custList = new List<Customer>

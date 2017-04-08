@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace LinqTest
 {
@@ -6,14 +8,17 @@ namespace LinqTest
     {
         static void Main(string[] args)
         {
+            List<int> lst = new List<int> { 10, 0, 3, 10, 10, 3, 4, 4, 4, 4, 4, 7 };
+
+            var mode = lst.GroupBy(i => i)
+                        .OrderBy(group => group.Count())
+                        .Select(group => group.Key);
+                        //.FirstOrDefault();
+
+            int k = 0;
+
         }
 
-        public void find()
-        {
-            CustomerRepository repository = new CustomerRepository();
-            var customerList = repository.Retrieve();
-
-            var result = repository.Find(customerList, 2);
-        }
+    
     }
 }
