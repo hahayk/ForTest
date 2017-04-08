@@ -11,7 +11,17 @@ namespace EntityFrameworkTest
     {
         static void Main(string[] args)
         {
+            var vid = new Video
+            {
+                Title = "Hello Entity Framework",
+                Description = "Description Entity Framework"
+            };
 
+            var meContext = new MeContext();
+            meContext.Videos.Add(vid);
+            meContext.SaveChanges();
+
+            //meContext.Database.Delete();
         }
     }
 
