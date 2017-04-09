@@ -17,7 +17,7 @@ namespace EntityFrameworkTest
         static void Main(string[] args)
         {
             Console.WriteLine("**** Very Simple Connection Factory *****\n");
-            string dataProviderString = ConfigurationSettings.AppSettings["provider"];
+            string dataProviderString = ConfigurationManager.AppSettings["provider"];
             DataProvider dataProvider = DataProvider.None;
             if (Enum.IsDefined(typeof(DataProvider), dataProviderString))
             {
