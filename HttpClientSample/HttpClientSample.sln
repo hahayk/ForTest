@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClientSample", "HttpClientSample\HttpClientSample.csproj", "{98CDCE5D-2ACD-4A6A-8A22-5C3254D6F1B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceController", "PriceController\PriceController.csproj", "{F8F36BCB-7872-4010-8CA8-E053704CE761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushStreamContentClient", "PushStreamContentClient\PushStreamContentClient.csproj", "{754682A9-3786-4D57-8D37-5C07596D1BC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{98CDCE5D-2ACD-4A6A-8A22-5C3254D6F1B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98CDCE5D-2ACD-4A6A-8A22-5C3254D6F1B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98CDCE5D-2ACD-4A6A-8A22-5C3254D6F1B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F36BCB-7872-4010-8CA8-E053704CE761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F36BCB-7872-4010-8CA8-E053704CE761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F36BCB-7872-4010-8CA8-E053704CE761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F36BCB-7872-4010-8CA8-E053704CE761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{754682A9-3786-4D57-8D37-5C07596D1BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{754682A9-3786-4D57-8D37-5C07596D1BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{754682A9-3786-4D57-8D37-5C07596D1BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{754682A9-3786-4D57-8D37-5C07596D1BC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,10 +20,12 @@ namespace HttpClientSample
 
         static async Task<Uri> CreateProductAsync(Product product)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync("api/product", product);
+            HttpResponseMessage response = await client.PostAsJsonAsync("api/products", product);
             response.EnsureSuccessStatusCode();
 
+            // return URI of the created resource.
             return response.Headers.Location;
+
         }
 
         static async Task<Product> GetProductAsync(string path)
@@ -65,24 +67,32 @@ namespace HttpClientSample
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
+
             try
             {
-                Product product = new Product { Name = "Gizmo", Price = 100, Category = "Widgets" };
+                Product product = new Product { Id = "1",  Name = "Gizmo", Price = 100, Category = "Widgets" };
+
                 var url = await CreateProductAsync(product);
                 Console.WriteLine($"Created at {url}");
 
+                // Get the product
                 product = await GetProductAsync(url.PathAndQuery);
                 ShowProduct(product);
 
+                // Update the product
                 Console.WriteLine("Updating price...");
                 product.Price = 80;
                 await UpdateProductAsync(product);
 
+                // Get the updated product
                 product = await GetProductAsync(url.PathAndQuery);
                 ShowProduct(product);
 
+                // Delete the product
                 var statusCode = await DeleteProductAsync(product.Id);
-                Console.WriteLine($"Deleted (Http status = {(int)statusCode})");
+                Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
+
+
             }
             catch (Exception e)
             {
